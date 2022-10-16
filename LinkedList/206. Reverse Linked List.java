@@ -10,6 +10,7 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
+        //最后一个节点指向null
         ListNode dummy = null;
         ListNode curr = head;
         while (curr != null) {
