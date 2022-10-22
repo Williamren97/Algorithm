@@ -16,7 +16,7 @@ public class LRUCache {
     public LRUCache(int capacity) {
         this.size = 0;
         this.capacity = capacity;
-        // 使用伪头部和伪尾部节点
+        // 使用伪头部和伪尾部节点，这样在添加节点和删除节点的时候就不需要检查相邻的节点是否存在。
         head = new DLinkedNode();
         tail = new DLinkedNode();
         head.next = tail;
