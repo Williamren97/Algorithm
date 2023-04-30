@@ -9,7 +9,7 @@
  */
 public class Codec {
 
-    // Encodes a tree to a single string.
+    // Encodes a tree to a single string. 
     public String serialize(TreeNode root) {
         //存空值，从而知道分支是否已经结束
         List<String> seq = new ArrayList<String>();
