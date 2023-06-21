@@ -33,3 +33,43 @@ class Solution {
         return result;
     }
 }
+
+
+
+
+// 3. 在 lowestCommonAncestor 方法中，首先将根节点加入到 redNodes Set 中，并对 p 节点执行向上标记，即将 p 及其祖先节点加入至 redNodes 中。
+
+// 4. 然后在 while 循环中，不断将 q 的父节点赋值给 q，直到 q 被加入到 redNodes Set 中，这样返回的 q 就是两个节点的最近公共祖先。
+
+
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        father = new HashMap<Integer, TreeNode>();
+        calcFather(root);
+        redNotes = new HashSet<Integer>();
+        redNotes.add(root.val);
+        while (p.val != root.val) {
+            redNotes.add(p.val);
+            p = father.get(p.val);
+        }
+        while (!redNotes.contains(q.val)) {
+            q = father.get(q.val);
+        }
+         return q;
+    }
+    private void calcFather(TreeNode root) {
+            if (root == null) return;
+            if (root.left != null) {
+                father.put(root.left.val, root);
+                calcFather(root.left);
+            }
+            if (root.right != null) {
+                father.put(root.right.val, root);
+                calcFather(root.right);
+            }
+        }
+        
+        private Map<Integer, TreeNode> father;
+        private Set<Integer> redNotes;
+}
+
